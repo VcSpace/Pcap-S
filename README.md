@@ -1,9 +1,9 @@
 # VcPcap
-**VcPcap base libpcap: Capture traffic and save as pcap file and analyze pcap files**
+**VcPcap based libpcap: Capture traffic and save as pcap file and analyze pcap files**
 
 ![build] ![pass] ![Binger]
 
-# Suupport Network
+# Support Network
 1. TCP
 2. UDP
 3. DNS
@@ -31,7 +31,7 @@ tar -xvf libpcap-1.9.1.tar.gz
 cd libpcap-1.9.1
 ./configure && make &&make install
 ```
-# Make VcPcap
+# Build VcPcap
 ```
 git clone https://github.com/VcSpace/VcPcap.git
 cd VcPcap
