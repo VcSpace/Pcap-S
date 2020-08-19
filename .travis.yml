@@ -30,5 +30,6 @@ before_install:
   - make install
   
 install:
+  - cd ../VcSpace/VcPcap/
   - make
   - ./VcPcap -h
