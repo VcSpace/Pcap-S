@@ -28,6 +28,8 @@ before_install:
   - make
   - chmod a+x pcap-config
   - sudo make install
+
+script: if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make ; fi
   
 install:
   - cd ..
