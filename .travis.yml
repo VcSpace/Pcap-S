@@ -18,9 +18,9 @@ matrix:
 
 before_install:
   - eval "${MATRIX_EVAL}"
-  - apt-get -y install flex
-  - apt-get -y install byacc
-  - apt-get -y install libpcap-dev
+  - sudo apt-get -y install flex
+  - sudo apt-get -y install byacc
+  - sudo apt-get -y install libpcap-dev
   - wget https://www.tcpdump.org/release/libpcap-1.9.1.tar.gz
   - tar -xvf libpcap-1.9.1.tar.gz
   - cd libpcap-1.9.1
