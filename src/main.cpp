@@ -29,7 +29,7 @@ static struct option Vcopts[] = {
 
 int main(int argc, char **argv)
 {
-    char * dev = argv[2];
+    //char * dev = argv[2];
     int opt;
 
     /*
@@ -57,13 +57,13 @@ int main(int argc, char **argv)
                 break;
             case 'h':
                 PcapUsage();
-                exit(0);
+                exit(-1);
             case 'v':
                 PcapVersion();
-                exit(0);
+                exit(-1);
             default:
                 PcapUsage();
-                exit(0);
+                exit(-1);
         }
     }
 
