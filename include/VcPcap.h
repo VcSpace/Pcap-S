@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <getopt.h>
 #include <string>
+#include <cstdlib>
 
 namespace Vc
 {

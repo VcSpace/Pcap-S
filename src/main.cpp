@@ -57,13 +57,13 @@ int main(int argc, char **argv)
                 break;
             case 'h':
                 PcapUsage();
-                exit(-1);
+                exit(1);
             case 'v':
                 PcapVersion();
-                exit(-1);
+                exit(1);
             default:
                 PcapUsage();
-                exit(-1);
+                exit(1);
         }
     }
 
