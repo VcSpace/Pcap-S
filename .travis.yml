@@ -30,12 +30,6 @@ before_install:
   - sudo make install
   
 install:
-<<<<<<< HEAD
-  - cd ../VcSpace/VcPcap/
-=======
-  - ls
   - cd ..
-  - ls
->>>>>>> 993483746edbb753a8bbfd6b250d8d7183b351fa
   - make
-  - ./VcPcap -h
+  - ./VcPcap
