@@ -4,10 +4,13 @@
 #include <pcap.h>
 #include <unistd.h>
 #include <getopt.h>
+#include <string>
 
 namespace Vc
 {
     char * dev;
+    std::string device;
+    std::string savefile;
 }
 
 #endif //VC_PCAP_H_

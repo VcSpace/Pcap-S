@@ -2,10 +2,30 @@
 
 #include <iostream>
 
-void VcPcapUsage()
+void PcapUsage()
 {
-    std::cout << "Help & version 20.8" std::endl;
+    std::cout << "    VcPcap Usage " << std::endl;
+    std::cout << "  -d: device \n  -f: savefile \n  -h: help \n  -v: versin \n" << std::endl;
 }
+
+void PcapVersion()
+{
+    std::cout << "VcPcap Version: 20.8.1 " << std::endl;
+}
+
+/*
+ * d:f:p::hv
+ */
+static struct option Vcopts[] = {
+
+    {"device", required_argument, NULL, 'd'},
+    {"savefile", optional_argument, NULL, 'f'},
+    {"pthread", required_argument, NULL, 'p'},
+    {"help", no_argument, NULL, 'h'},
+    {"version", no_argument, NULL, 'v'},
+    {0, 0, 0, 0}
+};
+
 
 int main(int argc, char **argv)
 {
@@ -19,31 +39,31 @@ int main(int argc, char **argv)
      * -h helpusage
      * -v version
      */
-    if(argc < 2)
-    {
-        return VcPcapusage();
-    }
+    int optionIndex = 0;
 
-    std::cout << "cin your device" << std::endl;
-    /*
-     * https://www.jianshu.com/p/76a4171a6d41
-     */
-    while((opt = getopt_long(argc, argv, "d:f:p::hv", VcPcapOption, &optionIndex)) != -1)
+    while((opt = getopt_long(argc, argv, "d:f:p::hv", Vcopts, &optionIndex)) != -1)
     {
         switch(opt)
         {
-            case 0:
-                break;
+            
             case 'd':
+                Vc::device = optarg;
                 break;
             case 'f':
+                Vc::savefile = optarg;
+                std::cout << "filename = " << Vc::savefile << "\n";
                 break;
             case 'p':
                 break;
+            case 'h':
+                PcapUsage();
+                exit(0);
             case 'v':
-                return VcPcapUsage();
+                PcapVersion();
+                exit(0);
             default:
-                return VcPcapUsage();
+                PcapUsage();
+                exit(0);
         }
     }
 
