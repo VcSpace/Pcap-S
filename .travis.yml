@@ -27,7 +27,7 @@ before_install:
   - ./configure
   - make
   - chmod a+x pcap-config
-  - make install
+  - sudo make install
   
 install:
   - make
