@@ -25,7 +25,7 @@ before_install:
   - tar -xvf libpcap-1.9.1.tar.gz
   - cd libpcap-1.9.1
   - ./configure
-  - chmod a+x pcap-config
+  - sudo chmod a+x pcap-config
   - make
   - make install
   
