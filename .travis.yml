@@ -14,9 +14,9 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-4
+            - g++-5
       env:
-         - MATRIX_EVAL="CC=gcc-4 && CXX=g++-4"
+         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
 
     # works on Precise and Trusty
     - os: linux
