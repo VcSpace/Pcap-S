@@ -1,7 +1,15 @@
 # VcPcap
 **VcPcap based libpcap: Capture traffic and save as pcap file and analyze pcap files**
 
-![build] ![pass] ![Binger]
+![OSX](https://img.shields.io/badge/TestOS-Ubuntu18--64%20%7C%20Ubuntu20--64%20%7C%20Centos7--64-inactive)
+![GCC](https://img.shields.io/badge/GCC-7.3%20%7C%209.3-inactive)
+
+[![Build Status](https://travis-ci.com/VcSpace/VcPcap.svg?branch=master)](https://travis-ci.com/VcSpace/VcPcap) 
+![GitHub issues](https://img.shields.io/github/issues/VcSpace/VcPcap?color=brightgreen)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/VcSpace/VcPcap/master)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/VcSpace/VcPcap)
+![GitHub stars](https://img.shields.io/github/stars/VcSpace/VcPcap?style=social)
+![GitHub forks](https://img.shields.io/github/forks/VcSpace/VcPcap?style=social)
 
 # Support Network
 1. TCP
@@ -43,4 +51,4 @@ make -j4
 [VcPcap Usage](https://VcSpace.github.io/post/VcPcap)
 
 # License
-![Lic]  **LGPL-2.1 License**
+![GitHub](https://img.shields.io/github/license/VcSpace/VcPcap?color=inactive)
