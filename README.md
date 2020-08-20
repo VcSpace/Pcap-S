@@ -1,8 +1,9 @@
 # VcPcap
 **VcPcap based libpcap: Capture traffic and save as pcap file and analyze pcap files**
 
-![OSX](https://img.shields.io/badge/TestOS-Ubuntu18--64%20%7C%20Ubuntu20--64%20%7C%20Centos7--64-inactive)
-![GCC](https://img.shields.io/badge/GCC-7.3%20%7C%209.3-inactive)
+---
+![OSX](https://img.shields.io/badge/TestOS-Ubuntu16--64%20%7C%20Ubuntu18--64%20%7C%20Ubuntu20--64-inactive)
+![GCC](https://img.shields.io/badge/GCC-5.5%20%7C%207.3%20%7C%209.3%20%7C%20-inactive)
 
 [![Build Status](https://travis-ci.com/VcSpace/VcPcap.svg?branch=master)](https://travis-ci.com/VcSpace/VcPcap) 
 ![GitHub issues](https://img.shields.io/github/issues/VcSpace/VcPcap?color=brightgreen)
