@@ -48,6 +48,7 @@ matrix:
           packages:
             - g++-8
       env:
+        - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
 
     - os: linux
       addons:
@@ -58,8 +59,6 @@ matrix:
             - g++-9
       env:
          - MATRIX_EVAL="CC=gcc-9 && CXX=g++-9"
-
-
 
 
 before_install:
