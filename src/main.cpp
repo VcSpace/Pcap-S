@@ -5,12 +5,29 @@
 void PcapUsage()
 {
     std::cout << "    VcPcap Usage " << std::endl;
-    std::cout << "  -d: device \n  -f: savefile \n  -h: help \n  -v: versin \n" << std::endl;
+    std::cout << "  -d: device \n  -f: savefile \n  -h: help \n  -v: versin \n  -l: list" << std::endl;
 }
 
 void PcapVersion()
 {
     std::cout << "VcPcap Version: 20.8.1 " << std::endl;
+}
+
+void VcDevice_List()
+{
+    pcap_if_t *it;
+    char errbuf[PCAP_ERRBUF_SIZE];
+    auto m_dev = pcap_findalldevs(&it, errbuf);
+
+    if(m_dev == 0)
+    {
+        std::cout << "Device List: \n";
+        while(it)
+        {
+            std::cout << it->name << std::endl;
+            it = it->next;
+        }
+    }
 }
 
 /*
@@ -23,6 +40,7 @@ static struct option Vcopts[] = {
     {"pthread", required_argument, NULL, 'p'},
     {"help", no_argument, NULL, 'h'},
     {"version", no_argument, NULL, 'v'},
+    {"Device list", no_argument, NULL, 'l'},
     {0, 0, 0, 0}
 };
 
@@ -41,7 +59,7 @@ int main(int argc, char **argv)
      */
     int optionIndex = 0;
 
-    while((opt = getopt_long(argc, argv, "d:f:p::hv", Vcopts, &optionIndex)) != -1)
+    while((opt = getopt_long(argc, argv, "d:f:p::hvl", Vcopts, &optionIndex)) != -1)
     {
         switch(opt)
         {
@@ -60,6 +78,9 @@ int main(int argc, char **argv)
                 exit(1);
             case 'v':
                 PcapVersion();
+                exit(1);
+            case 'l':
+                VcDevice_List();
                 exit(1);
             default:
                 PcapUsage();
