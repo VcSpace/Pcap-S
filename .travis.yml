@@ -11,7 +11,7 @@ matrix:
       addons:
         apt:
           sources:
-            - ubuntu
+            - ubuntu-toolchain-test
           packages:
             - gcc-7
       env:
