@@ -7,17 +7,63 @@ os:
 
 matrix:
   include:
+    # works on Precise and Trusty
     - os: linux
       addons:
         apt:
           sources:
-            - ubuntu-toolchain-test
+            - ubuntu-toolchain-r-test
           packages:
-            - gcc-7
+            - g++-4
+      env:
+         - MATRIX_EVAL="CC=gcc-4 && CXX=g++-4"
+
+    # works on Precise and Trusty
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+      env:
+        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+
+    # works on Precise and Trusty
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-8
+      env:
+
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-9
+      env:
+         - MATRIX_EVAL="CC=gcc-9 && CXX=g++-9"
+
+
+
+
 before_install:
+  - eval "${MATRIX_EVAL}"
   - sudo apt-get -y install flex
   - sudo apt-get -y install byacc
   - sudo apt-get -y install libpcap-dev
