@@ -17,7 +17,7 @@ void VcDevice_List()
 {
     pcap_if_t *it;
     char errbuf[PCAP_ERRBUF_SIZE];
-    auto m_dev = pcap_findalldevs(&it, errbuf);
+    int m_dev = pcap_findalldevs(&it, errbuf);
 
     if(m_dev == 0)
     {

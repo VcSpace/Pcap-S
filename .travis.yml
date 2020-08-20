@@ -4,20 +4,20 @@ compiler:
   - gcc
 os: 
   - linux
+
 matrix:
   include:
     - os: linux
       addons:
         apt:
           sources:
-            - ubuntu-toolchain-r-test
+            - ubuntu
           packages:
-            - g++-7
+            - gcc-7
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
 before_install:
-  - eval "${MATRIX_EVAL}"
   - sudo apt-get -y install flex
   - sudo apt-get -y install byacc
   - sudo apt-get -y install libpcap-dev
