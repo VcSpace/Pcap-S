@@ -96,7 +96,7 @@ int main(int argc, char **argv)
     {
         std::cout << "Couldn't open device: " << device << std::endl;
         //std::cout << "Errbuf: " << errbuf << std::endl;
-        exit(1);
+        exit(0);
     }
 
     *errbuf = NULL;
