@@ -95,21 +95,35 @@ int main(int argc, char **argv)
     if(handle == NULL)
     {
         std::cout << "Couldn't open device: " << device << std::endl;
+        //std::cout << "Errbuf: " << errbuf << std::endl;
         exit(1);
     }
 
     *errbuf = NULL;
     bpf_u_int32 localnet, netmask;
     int ne = pcap_lookupnet(device.c_str(), &localnet, &netmask, errbuf);
-    if(ne == -1)
+    if(ne != 0)
     {
-        std::cout << "errbuf: " << errbuf << std::endl;
+        std::cout << "lookupnet errbuf: " << errbuf << std::endl;
         exit(1);
     }
-    std::cout << "localnet : " << localnet << std::endl;
-    std::cout << "netmask : " << netmask << std::endl;
+    //std::cout << "localnet : " << localnet << std::endl;
+    //std::cout << "netmask : " << netmask << std::endl;
 
     std::cout << "Start Device: " << device << std::endl;
+
+    //struct and set network
+    struct bpf_program filter;
+    int net = pcap_compile(handle, &filter, NULL, 1, netmask);
+    if(net != 0)
+    {
+        std::cout << "Net error: " << pcap_geterr(handle) << std::endl;
+    }
+
+    /*
+     * char filter_app[] = "port 80";
+     * pcap_setfilter(handle, &filter);
+     */
 
     pcap_close(handle);
     return 0;
