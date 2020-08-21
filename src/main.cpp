@@ -29,7 +29,7 @@ void VcDevice_List()
         }
     }
 
-    char * buf = nullptr;
+    char * buf = NULL;
     buf = pcap_lookupdev(errbuf);
     std::cout << " \nUp devces:\n" << buf << std::endl; 
 }
