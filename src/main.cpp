@@ -4,8 +4,8 @@
 
 void PcapUsage()
 {
-    std::cout << "    VcPcap Usage " << std::endl;
-    std::cout << "  -d: device \n  -f: savefile \n  -h: help \n  -v: versin \n  -l: list" << std::endl;
+    std::cout << "VcPcap Usage " << std::endl;
+    std::cout << "- d: device_name \n- f: savefile_name \n- h: help \n- v: versin \n- l: device_list" << std::endl;
 }
 
 void PcapVersion()
@@ -28,6 +28,10 @@ void VcDevice_List()
             it = it->next;
         }
     }
+
+    char * buf = nullptr;
+    buf = pcap_lookupdev(errbuf);
+    std::cout << " \nUp devces:\n" << buf << std::endl; 
 }
 
 /*
@@ -37,7 +41,6 @@ static struct option Vcopts[] = {
 
     {"device", required_argument, NULL, 'd'},
     {"savefile", optional_argument, NULL, 'f'},
-    {"pthread", required_argument, NULL, 'p'},
     {"help", no_argument, NULL, 'h'},
     {"version", no_argument, NULL, 'v'},
     {"Device list", no_argument, NULL, 'l'},
@@ -47,7 +50,8 @@ static struct option Vcopts[] = {
 
 int main(int argc, char **argv)
 {
-    //char * dev = argv[2];
+    std::string device;
+    std::string savefile;
     int opt;
 
     /*
@@ -59,19 +63,15 @@ int main(int argc, char **argv)
      */
     int optionIndex = 0;
 
-    while((opt = getopt_long(argc, argv, "d:f:p::hvl", Vcopts, &optionIndex)) != -1)
+    while((opt = getopt_long(argc, argv, "d:f:hvl", Vcopts, &optionIndex)) != -1)
     {
         switch(opt)
         {
-            
             case 'd':
-                Vc::device = optarg;
+                device = optarg;
                 break;
             case 'f':
-                Vc::savefile = optarg;
-                std::cout << "filename = " << Vc::savefile << "\n";
-                break;
-            case 'p':
+                savefile = optarg;
                 break;
             case 'h':
                 PcapUsage();
@@ -88,5 +88,29 @@ int main(int argc, char **argv)
         }
     }
 
+    //start dev, savefile
+    pcap_t *handle;
+    char errbuf[PCAP_ERRBUF_SIZE];
+    handle = pcap_open_live(device.c_str(), BUFSIZ, 1, 200, errbuf);
+    if(handle == NULL)
+    {
+        std::cout << "Couldn't open device: " << device << std::endl;
+        exit(1);
+    }
+
+    *errbuf = NULL;
+    bpf_u_int32 localnet, netmask;
+    int ne = pcap_lookupnet(device.c_str(), &localnet, &netmask, errbuf);
+    if(ne == -1)
+    {
+        std::cout << "errbuf: " << errbuf << std::endl;
+        exit(1);
+    }
+    std::cout << "localnet : " << localnet << std::endl;
+    std::cout << "netmask : " << netmask << std::endl;
+
+    std::cout << "Start Device: " << device << std::endl;
+
+    pcap_close(handle);
     return 0;
 }
