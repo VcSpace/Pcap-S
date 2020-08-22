@@ -1,5 +1,6 @@
 sudo: required
 language: cpp
+compiler:
   - gcc
 os: 
   - linux
@@ -13,7 +14,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - gcc-7
+            - g++-7
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
     - os: linux
@@ -37,7 +38,6 @@ matrix:
 
 
 before_install:
-  - eval "${MATRIX_EVAL}"
   - sudo apt-get -y install flex
   - sudo apt-get -y install byacc
   - sudo apt-get -y install libpcap-dev
