@@ -34,6 +34,11 @@ void VcDevice_List()
     std::cout << " \nUp devces:\n" << buf << std::endl; 
 }
 
+void packet_handler(u_char *user, const struct pcap_pkthdr *pkt_header, const u_char *pkt_data)
+{
+    pcap_dump(user, pkt_header, pkt_data);// 输出数据到文件
+}
+
 /*
  * d:f:p::hv
  */
@@ -124,7 +129,28 @@ int main(int argc, char **argv)
      * char filter_app[] = "port 80";
      * pcap_setfilter(handle, &filter);
      */
+    pcap_dumper_t * out_pcap;
+    savefile = "/root/git/VcSpace/VcPcap/pcapsave/" + savefile + ".pcap";
+    std::cout << savefile << std::endl;
 
+    /*
+     * outfile
+     */
+    out_pcap = pcap_dump_open(handle, savefile.c_str());
+
+    int loop = pcap_loop(handle, 60, packet_handler, (u_char *) out_pcap);
+    if(loop == -1)
+    {
+        std::cout << "loop error " << std::endl;
+        exit(-1);
+    }
+
+    //flush
+    //pcap_dump_flush(out_pcap);
+
+    //End close device
     pcap_close(handle);
+    pcap_dump_close(out_pcap);
+
     return 0;
 }
