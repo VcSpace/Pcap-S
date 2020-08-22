@@ -120,8 +120,7 @@ int main(int argc, char **argv)
      * pcap_setfilter(handle, &filter);
      */
     pcap_dumper_t * out_pcap;
-    savefile = "/root/git/VcSpace/VcPcap/pcapsave/" + savefile + ".pcap";
-    std::cout << savefile << std::endl;
+    savefile = "pcapsave/" + savefile + ".pcap";
 
     /*
      * outfile
