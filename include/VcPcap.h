@@ -9,7 +9,8 @@
 
 namespace Vc
 {
-
+    void PcapUsage();
+    void PcapVersion();
 }
 
 #endif //VC_PCAP_H_

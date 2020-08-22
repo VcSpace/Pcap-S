@@ -2,16 +2,6 @@
 
 #include <iostream>
 
-void PcapUsage()
-{
-    std::cout << "VcPcap Usage " << std::endl;
-    std::cout << "- d: device_name \n- f: savefile_name \n- h: help \n- v: versin \n- l: device_list" << std::endl;
-}
-
-void PcapVersion()
-{
-    std::cout << "VcPcap Version: 20.8.1 " << std::endl;
-}
 
 void VcDevice_List()
 {
@@ -79,16 +69,16 @@ int main(int argc, char **argv)
                 savefile = optarg;
                 break;
             case 'h':
-                PcapUsage();
+                Vc::PcapUsage();
                 exit(1);
             case 'v':
-                PcapVersion();
+                Vc::PcapVersion();
                 exit(1);
             case 'l':
                 VcDevice_List();
                 exit(1);
             default:
-                PcapUsage();
+                Vc::PcapUsage();
                 exit(1);
         }
     }
