@@ -8,9 +8,6 @@
 [![Build Status](https://travis-ci.com/VcSpace/VcPcap.svg?branch=master)](https://travis-ci.com/VcSpace/VcPcap) 
 ![GitHub issues](https://img.shields.io/github/issues/VcSpace/VcPcap?color=brightgreen)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/VcSpace/VcPcap/master)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/VcSpace/VcPcap)
-![GitHub stars](https://img.shields.io/github/stars/VcSpace/VcPcap?style=social)
-![GitHub forks](https://img.shields.io/github/forks/VcSpace/VcPcap?style=social)
 
 # Support Network
 1. TCP
