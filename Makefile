@@ -15,5 +15,5 @@ ap: $(OBJS)
 
 .PHONY: clean
 clean:
-	rm  -f VcPcap
+	rm  -f $(APP)
 
