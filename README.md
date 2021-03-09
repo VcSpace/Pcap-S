@@ -2,8 +2,7 @@
 **简单实现一个基于Libpcap 捕获HTTP流量 保存为Pcap包**
 
 ---
-![OSX](https://img.shields.io/badge/TestOS-Ubuntu16--64%20%7C%20Ubuntu18--64%20%7C%20Ubuntu20--64-inactive)
-![GCC](https://img.shields.io/badge/GCC-5.5%20%7C%207.3%20%7C%209.3%20%7C%20-inactive)
+
 [![Build Status](https://travis-ci.com/VcSpace/VcPcap.svg?branch=master)](https://travis-ci.com/VcSpace/VcPcap) 
 
 # Install libpcap
@@ -23,16 +22,12 @@ tar -xvf libpcap-1.9.1.tar.gz
 cd libpcap-1.9.1
 ./configure && make &&make install
 ```
-# Build VcPcap
+# Build
 ```
-git clone https://github.com/VcSpace/VcPcap.git
-cd VcPcap
-make -j4
-./Vcpcap -h
+make
+#查看帮助
+./Vcpcap -h 
 ```
-
-# Useage
-[VcPcap Usage](https://VcSpace.github.io/post/VcPcap)
 
 # License
 ![GitHub](https://img.shields.io/github/license/VcSpace/VcPcap?color=inactive)
